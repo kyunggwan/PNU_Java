@@ -9,7 +9,7 @@ public class Practice14 {
 		System.out.println("★★소수 인지 확인하는 프로그램 입니다!★★");
 		System.out.print("[숫자를 입력해 주세요!]   ");
 		int num;
-		while ((num = sc.nextInt()) != 0) {
+		while ((num = sc.nextInt()) != 1) {
 
 			int b;
 			boolean result = true;
@@ -24,7 +24,7 @@ public class Practice14 {
 			}
 			System.out.println("[" + num + " 의 소수 판별 : " + result + "]");
 			System.out.println("");
-			System.out.print("[숫자를 입력해 주세요!] (종료는 0)  ");
+			System.out.print("[숫자를 입력해 주세요!] (종료는 1)  ");
 		}
 		System.out.println("[종료합니다!]");
 	}
