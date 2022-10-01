@@ -122,7 +122,7 @@ class WorkStudent extends Student {
 	}
 
 	public void show() {
-//		super.show();
+		super.show();
 		System.out.println("          [직업 = " + job + ", 일당 = " + dayPay + "만원]");
 	}
 
@@ -164,9 +164,8 @@ public class TestPerson {
 		getData(setPerson);
 		showAll(setPerson);
 		increaseAll(setPerson);
-		// showAll(setPerson);
+		//showAll(setPerson);
 
 	}
 }
 
-//WorkStudent의 show가 출력되지 않습니다 ㅜ
