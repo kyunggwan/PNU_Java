@@ -21,16 +21,8 @@ abstract class Person {
 		return "[주민번호 = " + pnum + ", 이름 = " + name + ", 나이 = " + age + "] \n";
 	}
 
-	public String getPnum() {
-		return pnum;
-	}
-
 	public String getName() {
 		return name;
-	}
-
-	public int getAge() {
-		return age;
 	}
 
 	abstract void show(); // toString()을 호출하여 sysout처리
@@ -51,13 +43,11 @@ class Employee extends Person {
 	}
 
 	public void show() {
-		System.out.print("인물 정보 = " + toString());
+		System.out.print(toString());
 	}
 
 	public void increase() {
-		System.out.println("");
-		System.out.println(getName()+"의 [근로자의 임금 출력!]");
-		System.out.println(getName()+"의 기존 임금은 (" + salary + "만원) >> 10% 증가해서 (" + Math.round((salary * 110)/100) + "만원)입니다!");
+		salary *= 1.1;
 	}
 
 }
@@ -74,12 +64,10 @@ class Designer extends Employee {
 
 	public void show() {
 		super.show();
-		System.out.println("          [사용 가능 언어 = " + language + ", 경력 = " + workYear + "]");
+		System.out.println("[사용 가능 언어 = " + language + ", 경력 = " + workYear + "]");
 	}
 
 	public void increase() {
-		System.out.println("");
-		System.out.print("[디자이너]");
 		super.increase();
 	}
 
@@ -99,14 +87,11 @@ class Student extends Person {
 
 	public void show() {
 		System.out.print(toString());
-		System.out.println(
-				"          [학교 이름 = " + schoolName + "학교, 학년 = " + schoolYear + "학년, 장학금 = " + scholarship + "만원]");
+		System.out.println("[학교 이름 = " + schoolName + "학교, 학년 = " + schoolYear + "학년, 장학금 = " + scholarship + "만원]");
 	}
 
 	public void increase() {
-		System.out.println("");
-		System.out.println(getName()+"의 [학생의 급여 상승 출력!]");
-		System.out.println(getName()+"의 기존의 장학금은 (" + scholarship + "만원) >> 10% 증가 하여 (" + Math.round((scholarship * 110)/100) + "만원)입니다!");
+		scholarship *= 1.1;
 	}
 }
 
@@ -123,12 +108,12 @@ class WorkStudent extends Student {
 
 	public void show() {
 		super.show();
-		System.out.println("          [직업 = " + job + ", 일당 = " + dayPay + "만원]");
+		System.out.println("[직업 = " + job + ", 일당 = " + dayPay + "만원]");
 	}
 
 	public void increase() {
 		super.increase();
-		System.out.println(getName()+"의 기존 일당은 (" + dayPay + "만원) >> 10% 증가 하여 (" + (dayPay * 1.1) + "만원)입니다!");
+		dayPay *= 1.1;
 	}
 }
 
@@ -163,9 +148,10 @@ public class TestPerson {
 		Person[] setPerson = new Person[4];
 		getData(setPerson);
 		showAll(setPerson);
+		System.out.println("=".repeat(80));
 		increaseAll(setPerson);
-		//showAll(setPerson);
+		showAll(setPerson);
+		System.out.println("=".repeat(80));
 
 	}
 }
-
