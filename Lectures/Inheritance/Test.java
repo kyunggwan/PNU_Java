@@ -76,25 +76,28 @@ public class Test {
 
 		// Person list[] = new Person[5];
 		// Person p = new Person();
-
-//		Student s = new Student("박경관", 3, "고분자"); // 출력 방법 1
+		
+		// 출력 방법 1
+//		Student s = new Student("박경관", 3, "고분자"); 
 //		s.show();
-
-		List<Person> list = new ArrayList<>(); // 출력 방법 2
+		
+		// 출력 방법 2
+		List<Person> list = new ArrayList<>(); 
 		list.add(new Student("박경관", 3, "고분자"));
 
 		for (Person a : list) {
 			a.show();
 		}
 		
-//		Person[] p = new Person[1];				//출력 방법 3
+		//출력 방법 3
+//		Person[] p = new Person[1];				
 //		p[0] = new Student("박경관", 4, "고분자");
-		
-//		for( int i = 0 ; i < p.length; i++) {  //출력 방법 3-1
+		//출력 방법 3-1
+//		for( int i = 0 ; i < p.length; i++) {  
 //			p[i].show();
 //		}
-		
-//		for (Person a : p) {					//출력 방법 3-2
+		//출력 방법 3-2
+//		for (Person a : p) {					
 //			a.show();
 //		}
 	}

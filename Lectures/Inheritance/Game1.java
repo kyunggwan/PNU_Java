@@ -49,24 +49,28 @@ class Tank1 extends Unit1 {
 public class Game1 {
 
 	public static void main(String[] args) {
-//		Tank1 t = new Tank1("시즈탱크", 5, "모드");  //출력 방법 1
+		//출력 방법 1 : 생성자 만들어서 출력
+//		Tank1 t = new Tank1("시즈탱크", 5, "모드");  
 //		t.attack();	
-
-//		List<Unit1> list = new ArrayList<>(); 	//출력 방법 2
+		
+		//출력 방법 2 : list로 출력
+//		List<Unit1> list = new ArrayList<>(); 	
 //		list.add(new Tank1("땅크", 4, "시즈"));
 //
 //		for (Unit1 u : list) {					
 //			u.attack();
 //		}		
-//		
-		Unit1[] u1 = new Unit1[1]; // 출력 방법 3
+		
+//		출력 방법 3 : 배열로 출력
+		Unit1[] u1 = new Unit1[1]; 
 		u1[0] = new Tank1("땅크", 4, "시즈모드");
 
-		for (int i = 0; i < u1.length; i++) { // 출력 방법 3-1
+		// 출력 방법 3-1
+		for (int i = 0; i < u1.length; i++) { 
 			u1[i].attack();
 		}
-//for 입력은 두 방법 중 하나지만 위의 방법이 더 좋은듯하다.	
-//		for (Unit1 a : u1) {					//출력 방법 3-2
+		//출력 방법 3-2
+//		for (Unit1 a : u1) {					
 //			a.attack();
 //		}
 
