@@ -37,17 +37,29 @@ public class Stack<T> {
 
 //--- 생성자(constructor) ---// 133페이지 밑쪽에 생성자 있음. 책은 배열인데 여긴 리스트니까 고쳐서 밑에 완성 트라이캐치는 주석처리하고
 	public Stack(int maxlen) {
+		ptr = 0;
+		capacity = maxlen;
+		try {
+			stk = new int[capacity];
+		} catch (OutOfMemoryError e) {
+			capacity = 0;
+		}
 
 	}
 
 //--- 스택에 x를 푸시 ---//
 	public int push(T x) {
+		if ( ptr >= capacity )
+			throw new OverflowIntStackException();
+		return stk[ptr++] = x;
 
 	}
 	
 //--- 스택에서 데이터를 팝(정상에 있는 데이터를 꺼냄) ---//
 	public T pop()  {
-
+			if (ptr <= 0)
+				throw new EmptyIntStackException();
+			return[--stk];
 
 	}
 
@@ -63,7 +75,11 @@ public class Stack<T> {
 
 //--- 스택에서 x를 찾아 인덱스(없으면 –1)를 반환 ---//
 	public int indexOf(T x) {
-
+		for (int i = ptr -1; i >=0; i--)
+			if (stk[i] == x)
+				return i;
+		
+		return -1;
 	}
 
 //--- 스택의 크기를 반환 ---//
@@ -88,6 +104,13 @@ public class Stack<T> {
 
 //--- 스택 안의 모든 데이터를 바닥 → 정상 순서로 표시 ---//
 	public void dump() {
+		if (ptr <= 0)
+			System.out.println("스택이 비어 있습니다.");
+		else {
+			for (int i = 0; i < ptr; i++)
+				System.out.println(stk[i] + " ");
+			System.out.println()
+		}
 
 	}
 }
