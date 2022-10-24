@@ -1,12 +1,12 @@
 package GenericStack;
 
 import java.util.Scanner;
-
+//JVM은 제너릭 타입의 예외처리를 지원하지 않으므로 Point클래스로 만들어서 처리
 public class TestGenericStack_Assignment {
 	public static void main(String[] args) {
 
 		Scanner stdIn = new Scanner(System.in);
-		Stack2 s = new Stack2(8); // 최대 64 개를 푸시할 수 있는 스택
+		Stack2 s = new Stack2(8); // 최대 8 개를 푸시할 수 있는 스택
 		Point p = new Point(0, 0);
 		int rndx = 0, rndy = 0;
 
