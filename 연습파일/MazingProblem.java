@@ -28,9 +28,6 @@ public class MazingProblem {
 //	}
 //	
 
-	// Item 스택을 만듦.
-
-	//
 	static Offsets moves[] = new Offsets[8];
 
 	// 방향을 설정, 북쪽을 0으로 시계방향으로 방향을 나타냄
