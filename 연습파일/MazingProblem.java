@@ -1,6 +1,4 @@
-package Maze;
-
-import Maze.Item.MazeStack;
+package SelfStudy;
 
 class Offsets {
 	public int a;
@@ -19,32 +17,11 @@ class Offsets {
 }
 
 public class MazingProblem {
-	// 테두리 설정.
-//	for (int i = 0; i < maze.length; i++) {
-//		for (int j = 0; j < maze[i].length; j++) {
-//			System.out.print(maze[i][j] + " ");
-//		}
-//		System.out.println("");
-//	}
-//	
-
-	static Offsets moves[] = new Offsets[8];
-
-	// 방향을 설정, 북쪽을 0으로 시계방향으로 방향을 나타냄
-//	int moves[][] = {
-//			{ 0, 1 }, // N
-//			{ 1, 1 }, // NE
-//			{ 1, 0 }, // E
-//			{ 1, -1 }, // SE
-//			{ 0, -1 }, // S
-//			{ -1, -1 }, // SW
-//			{ -1, 0 }, // W
-//			{ -1, 1 } // NW
-//	};
-
 //path 메소드
 	static void path(int[][] maze, int[][] mark, int x, int y) {
-		MazeStack st = new MazeStack(100);
+		Offsets moves[] = new Offsets[8];
+		
+		Stack st = new Stack(100);
 		// 시작점 1,1
 		mark[1][1] = 1;
 		int ix, iy, dir;
@@ -72,10 +49,10 @@ public class MazingProblem {
 
 				int h = k + moves[d].b;
 
-				if ((g == ix) && (h == iy)) { // reached exit
+				if ((g == 15) && (h == 12)) { // reached exit
 					// output path
 					System.out.println("the term near the exit: " + i + " " + k);
-					System.out.println("exit: " + ix + " " + iy);
+					System.out.println("exit: " + 15 + " " + 12);
 					return;
 				}
 				if ((maze[g][h] == 0) && (mark[g][h] == 0)) { // new position
@@ -145,22 +122,22 @@ public class MazingProblem {
 				{ 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1 }, { 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0 },
 				{ 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0 }, { 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0 }, };
 
-		moves[0].a = -1;
-		moves[0].b = 0;
-		moves[1].a = -1;
-		moves[1].b = 1;
-		moves[2].a = 0;
-		moves[2].b = 1;
-		moves[3].a = 1;
-		moves[3].b = 1;
-		moves[4].a = 1;
-		moves[4].b = 0;
-		moves[5].a = 1;
-		moves[5].b = -1;
-		moves[6].a = 0;
-		moves[6].b = -1;
-		moves[7].a = -1;
-		moves[7].b = -1;
+//		moves[0].a = -1;
+//		moves[0].b = 0;
+//		moves[1].a = -1;
+//		moves[1].b = 1;
+//		moves[2].a = 0;
+//		moves[2].b = 1;
+//		moves[3].a = 1;
+//		moves[3].b = 1;
+//		moves[4].a = 1;
+//		moves[4].b = 0;
+//		moves[5].a = 1;
+//		moves[5].b = -1;
+//		moves[6].a = 0;
+//		moves[6].b = -1;
+//		moves[7].a = -1;
+//		moves[7].b = -1;
 
 		// i가 0~14이고, j가 0~17일때, maze[i][j]=1안간다.
 		for (int i = 0; i < 14; i++) {
