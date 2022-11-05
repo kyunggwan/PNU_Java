@@ -2,51 +2,55 @@ package Queen8;
 
 public class Backtracking_Queen {
 	public static void SolveQueen(int[][] d) {
-		// 변수 설정, count
 		int count = 0;
-		int mode = 0;
-		int ix = 0, iy = 0;
-		// 스택을 만듦
-		QueenStack st = new QueenStack(10);
-		// 생성자, (ix, iy)는 좌표 주소가 된다.
-		Point p = new Point(ix, iy);
-		// 시작점 = 1 , count를 증가시키고, 시작점 1을 스택에 푸시한다
-		d[ix][iy] = 1;
-		count++;
-		st.push(p);
-		// count는 col 방향 이동하는 거를 센다. count == 각 행에 몇개의 퀸이 있는지 센다.
-		//퀸을 모든 행에 배치할 동안
-		while (count < d.length) {
-			ix++;
-			// cy는 행, row이며 내가 이동할 위치 
-			int cy = 0;
+		int ix, iy;
+		QueenStack st = new QueenStack(8);
 
+		
+		// 퀸을 모든 행에 배치할 동안
+		while ( count< d[0].length) {
+			// 0행부터 검사하겠다
+			ix = 0;
+			iy = count;
+			// iy열의 행ix 1행, 2행, 3행들을 다 검사 하겠다.
 			while (ix < d.length) {
-				cy = NextMove(d, ix, cy);
-					
-				while (cy < d[0].length) {
-					Point px = new Point(ix, iy);
-
-					if (CheckMove(d, ix, iy)) {
-						st.push(px);
-						count++;
-						break;
-					}
-					cy++;
+				Point px = new Point(ix, iy);
+				
+				// 체크해서 가능하면
+				if (CheckMove(d, ix, iy)) {
+					d[ix][iy] = 1;
+					st.push(px);
+					count++;
+					ix++;
+				} else { // 체크해서 가능하지 않으면
+					iy++; // 다음 열을 검사한다.
 				}
-				if (cy != d[0].length) {
+
+				// 만약 ix가 범위를 벗어나게 되면
+				if (iy >= d[0].length) {
+					px = st.pop(); // 스택에서 이전 위치를 팝하고
+
+					ix = px.getX();
+					iy = px.getY(); // 좌표를 돌려놓고,
+					d[ix][iy] = 0; // 이전 위치 데이터 삭제
+					iy++; // 다음 위치를 검사
 					break;
-				} else {
-					p = st.pop();
-					count--;
-					ix = p.getX();
-					iy = p.getY();
 
 				}
-
+				if (ix == d.length) {
+					px = st.pop();
+					ix = px.getX();
+					iy = px.getY();
+					d[ix][iy] = 0;
+					iy++; // 행의 끝까지 가버리면 다음 열로 가라
+				}
+				System.out.println("무한 루프 00");
 			}
-
+			System.out.println("무한 루프1");
 		}
+
+		System.out.println("무한루프 2222222");
+		System.out.println("카운트 = " + count);
 	}
 
 	// row를 검사함. 왼쪽, 오른쪽을 검사
@@ -111,18 +115,9 @@ public class Backtracking_Queen {
 
 	}
 
-	public static Integer NextMove(int[][] d, int row, int col) {// 다음 row에 대하여 이동할 col을 조사
-		while (col < d.length) {
-			if (CheckMove(d, row, col))
-				return col;
-			col++;
-		}
-		return d.length;
-	}
-
 	public static void main(String[] args) {
-		int row = 8, col = 8;
-		int[][] data = new int[8][8];
+		int row = 4, col = 4;
+		int[][] data = new int[4][4];
 		for (int i = 0; i < data.length; i++)
 			for (int j = 0; j < data[0].length; j++)
 				data[i][j] = 0;
