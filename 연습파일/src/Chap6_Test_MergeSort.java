@@ -4,44 +4,47 @@ public class Chap6_Test_MergeSort {
 
 	// --- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
 	static void merge(int[] a, int lefta, int righta, int leftb, int rightb) {
-		int[] t = new int[20]; // 작업용 배열
+		int[] t = new int[a.length]; // 작업용 배열
 		int p = lefta; // p는 배열1의 시작 인덱스
 		int q = leftb; // q는 배열2의 시작 인덱스
-		int ix = 0;
+		int ix = lefta;
+
+		// 배열1의 첫값과 배열2의 첫값을 비교해서 작은 값을 t[]에 넣음
 		while (p <= righta && q <= rightb) {
-			if (a[p] >= a[q]) {
-				t[ix++] = a[q++];
-			} else if (a[p] < a[q]) {
+			if (a[p] <= a[q]) {
 				t[ix++] = a[p++];
-			}
-
-			for (int i = 0; i <= righta; i++) {
-				t[ix++] = a[p++];
-			}
-			for (int i = 0; i <= rightb; i++) {
+			} else {
 				t[ix++] = a[q++];
 			}
-
 		}
+
+		//정리한 t[]배열을 다시 a[]에 넣음
+		//
+		for (int i = p; i < ix; i++) {
+			t[i] = a[i];
+		}
+
 	}
 
 	// --- 퀵 정렬(비재귀 버전) 이용---//
 	static void MergeSort(int[] a, int left, int right) {
+		//부분 리스트 원소가 1개만 가지면 그만
+	
 		if (left < right) {
 			int middle = (left + right) / 2;
-			// 배열1 만들고, 정렬
+			// 왼쪽으로 배열1 만들고, 정렬
 			MergeSort(a, left, middle);
-			// 배열2 만들고, 정렬
+			// 오른쪽으로 배열2 만들고, 정렬
 			MergeSort(a, middle + 1, right);
 			// merge메소드(배열, 배열1의 시작점과 끝점, 배열2의 시작점과 끝점)
-			merge(a, left, middle, middle + 1, right);
+			merge(a, left, middle, (middle + 1), right);
 		}
 	}
 
 	public static void main(String[] args) {
-		int nx = 20;
-		int[] x = new int[20];
-		for (int ix = 0; ix < 20; ix++) {
+		int nx = 6;
+		int[] x = new int[nx];
+		for (int ix = 0; ix < nx; ix++) {
 			double d = Math.random();
 			x[ix] = (int) (d * 50);
 		}
