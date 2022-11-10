@@ -1,4 +1,4 @@
-package Chap6Sort;
+package SelfStudy;
 
 public class Chap6_Test_MergeSort {
 
@@ -18,26 +18,23 @@ public class Chap6_Test_MergeSort {
 			}
 		}
 
-		//정리한 t[]배열을 다시 a[]에 넣음
-		//
-		for (int i = p; i < ix; i++) {
-			t[i] = a[i];
+		//앞쪽 포인터가 배열의 끝에서 남은 만큼을 최종 배열에 넣는다
+		for (int i = 0; i <= righta - p; i++) {
+			t[ix + i] = a[p + i];
 		}
 
 	}
 
 	// --- 퀵 정렬(비재귀 버전) 이용---//
 	static void MergeSort(int[] a, int left, int right) {
-		//부분 리스트 원소가 1개만 가지면 그만
-	
+		// 부분 리스트 원소가 1개만 가지면 그만
+
 		if (left < right) {
 			int middle = (left + right) / 2;
-			// 왼쪽으로 배열1 만들고, 정렬
+
 			MergeSort(a, left, middle);
-			// 오른쪽으로 배열2 만들고, 정렬
 			MergeSort(a, middle + 1, right);
-			// merge메소드(배열, 배열1의 시작점과 끝점, 배열2의 시작점과 끝점)
-			merge(a, left, middle, (middle + 1), right);
+			merge(a, left, middle, middle + 1, right);
 		}
 	}
 
