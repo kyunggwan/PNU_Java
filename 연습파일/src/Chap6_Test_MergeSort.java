@@ -1,4 +1,4 @@
-package SelfStudy;
+package Chap6Sort;
 
 public class Chap6_Test_MergeSort {
 
@@ -7,8 +7,8 @@ public class Chap6_Test_MergeSort {
 		int[] t = new int[a.length]; // 작업용 배열
 		int p = lefta; // p는 배열1의 시작 인덱스
 		int q = leftb; // q는 배열2의 시작 인덱스
-		int ix = lefta;
 
+		int ix = 0;
 		// 배열1의 첫값과 배열2의 첫값을 비교해서 작은 값을 t[]에 넣음
 		while (p <= righta && q <= rightb) {
 			if (a[p] <= a[q]) {
@@ -16,13 +16,33 @@ public class Chap6_Test_MergeSort {
 			} else {
 				t[ix++] = a[q++];
 			}
+			// 앞쪽 포인터가 배열의 끝에서 남은 만큼을 최종 배열에 넣는다
+//			for (int i = 0; i <= righta - p; i++) {
+//				t[ix + i] = a[p + i];
+//			}
+
+		}
+		while (p <= righta) {
+			t[ix++] = a[p++];
+		}
+		while (q <= rightb) {
+			t[ix++] = a[q++];
 		}
 
-		//앞쪽 포인터가 배열의 끝에서 남은 만큼을 최종 배열에 넣는다
-		for (int i = 0; i <= righta - p; i++) {
-			t[ix + i] = a[p + i];
-		}
+//		 정리한 t[]배열을 다시 a[]에 넣음
+//			for (int i = p; i <= righta-lefta; i++) {
+//				t[i] = a[p++];
+//			}
+//			for (int i = q; i <= rightb-leftb; i++) {
+//				t[i] = a[q++];
+//			}
 
+		p = lefta;
+		for (int idx = 0; idx < ix; idx++) {
+			a[p] = t[idx];
+			System.out.println("a[] = " + a[p]);
+			p++;
+		}
 	}
 
 	// --- 퀵 정렬(비재귀 버전) 이용---//
@@ -31,10 +51,12 @@ public class Chap6_Test_MergeSort {
 
 		if (left < right) {
 			int middle = (left + right) / 2;
-
+			// 왼쪽으로 배열1 만들고, 정렬
 			MergeSort(a, left, middle);
+			// 오른쪽으로 배열2 만들고, 정렬
 			MergeSort(a, middle + 1, right);
-			merge(a, left, middle, middle + 1, right);
+			// merge메소드(배열, 배열1의 시작점과 끝점, 배열2의 시작점과 끝점)
+			merge(a, left, middle, (middle + 1), right);
 		}
 	}
 
