@@ -1,7 +1,6 @@
 package Chap6Sort;
 
 public class Chap6_Test_MergeSort {
-
 	// --- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
 	static void merge(int[] a, int lefta, int righta, int leftb, int rightb) {
 		int[] t = new int[a.length]; // 작업용 배열
