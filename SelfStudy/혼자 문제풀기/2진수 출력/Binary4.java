@@ -29,6 +29,5 @@ public class Binary4 {
         
         //출력
         Cal_static.calculate(num);
-
     }
 }
