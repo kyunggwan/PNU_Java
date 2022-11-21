@@ -7,7 +7,6 @@ public class Binary2 {
         int[] arr = new int[10000];
         //배열 초기값 지정
         int i = 0;
-
         //2진수 구현 부분
         while (num > 0) {
             arr[i] = num % 2;
@@ -20,7 +19,6 @@ public class Binary2 {
             System.out.print(arr[i]);
         }
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
