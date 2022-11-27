@@ -43,7 +43,6 @@ public class Odd_useMethod {
 			for (int i = 0; i < returns.length; i++) {
 				System.out.print(returns[i] + " ");
 			}
-
 			System.out.println("");
 			System.out.println("");
 			System.out.print("[정수 n을 입력하세요](0을 누르면 종료)");
