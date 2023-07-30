@@ -1,30 +1,32 @@
 package CT_Basic;
 
-import java.io.IOException;
 import java.util.Scanner;
-
 
 public class ct03 {
 
-    public String solution(String str) throws IOException {
+    public String solution(String str) {
         String answer = "";
-        int m = Integer.MIN_VALUE; // 가장 작은 값으로 초기화
-        String[] s = str.split(" ");
-        for (String x : s) {
-            int len = x.length();
+        int m = Integer.MIN_VALUE, pos; // m 은 int가 가지는 가장 최소값,
+        while ((pos = str.indexOf(' ')) != -1) { // 띄어쓰기의 위치를 return 해준다
+            String tmp = str.substring(0, pos);
+            int len = tmp.length();
             if (len > m) {
                 m = len;
-                answer = x;
+                answer = tmp;
             }
+            str = str.substring(pos + 1);
         }
-
+        // 마지막 단어의 길이를 비교
+        if (str.length() > m) {
+            answer = str;
+        }
         return answer;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
-        ct03 m = new ct03();
-        System.out.println(m.solution(str));
+        ct03 instance = new ct03();
+        System.out.println(instance.solution(str));
     }
 }
