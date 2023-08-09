@@ -1,6 +1,6 @@
 package CT_Basic;
 
-public class chapter07_StackFrame {
+public class Chapter07_01StackFrame {
 
     public void DFS(int n) {
         if(n==0)return;
@@ -12,7 +12,7 @@ public class chapter07_StackFrame {
     }
 
     public static void main(String[] args) {
-        chapter07_StackFrame T = new chapter07_StackFrame();
+        Chapter07_01StackFrame T = new Chapter07_01StackFrame();
         T.DFS(3);
     }
 }
