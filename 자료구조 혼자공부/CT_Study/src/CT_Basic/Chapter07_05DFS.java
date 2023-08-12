@@ -14,6 +14,14 @@ public class Chapter07_05DFS {
     Node root;
 
     public void DFS(Node root) {
+        if (root == null) return;
+        else {
+//            System.out.print(root.data+" ");  // 전위 순회
+            DFS(root.lt);
+            System.out.print(root.data + " "); // 중위 순회
+            DFS(root.rt);
+//            System.out.print(root.data + " "); // 후위 순회
+        }
 
     }
 
