@@ -5,19 +5,23 @@ import java.util.StringTokenizer;
 
 public class Num2644 {
     static int MAX = 100 + 10;
-    static boolean graph[][];
+    static boolean [][] graph;
     static boolean[] visited;
     static int N, M, PersonA, PersonB;
     static int generation = -1;
 
-    public static void dfs(int idx) {
+    public static void dfs(int idx, int count) {
         visited[idx] = true;
-        generation++;
-        for (int i = 1; i <= N; i++) {
-            if (visited[i] == false && graph[idx][i]) {
-                dfs(i);
-            }
 
+        if(idx == PersonB){
+            generation = count;
+            return;
+        }
+
+        for(int i = 1; i <= N; i++){
+            if(visited[i]==false && graph[idx][i]){
+                dfs(i, count + 1);
+            }
         }
     }
 
@@ -38,7 +42,8 @@ public class Num2644 {
         // 1. graph로 연결 정보 채우기
         graph = new boolean[MAX][MAX];
         visited = new boolean[MAX];
-        for (int i = 1; i <= 9; i++) {
+        generation = -1;
+        for (int i = 1; i <= M; i++) {
             int x, y;
             st = new StringTokenizer(br.readLine());
             x = Integer.parseInt(st.nextToken());
@@ -48,8 +53,10 @@ public class Num2644 {
         }
 
         // 2. DFS(재귀함수) 호출
+        dfs(PersonA, 0);
 
         // 3. 출력
+        bw.write(String.valueOf(generation));
 
         br.close();
         bw.close();
